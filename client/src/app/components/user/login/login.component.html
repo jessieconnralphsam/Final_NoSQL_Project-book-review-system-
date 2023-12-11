@@ -1,0 +1,56 @@
+<!-- <div class="form login-form">
+  <form #formDir="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h1>Login Here</h1>
+    <div class="form-field">
+      <input type="text" class="username" name="username" placeholder="Username" formControlName="username" />
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="input-error">
+        <div *ngIf="username.errors.required">
+          Username is required
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <input type="password" class="pass" name="password" placeholder="***" formControlName="password" />
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="input-error">
+        <div *ngIf="password.errors.required">
+          Password is required
+        </div>
+        <div *ngIf="password.errors.minlength || password.errors.maxlength">
+          Password must be between 3 and 16 symbols
+        </div>
+      </div>
+    </div>
+    <input type="submit" class="submit" value="Login" [disabled]="loginForm.invalid" />
+  </form>
+</div> -->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1 class="text-center">Login Here</h1>
+        
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" formControlName="username" />
+          <div *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)" class="text-danger">
+            <div *ngIf="loginForm.get('username').hasError('required')">Username is required</div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" formControlName="password" />
+          <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)" class="text-danger">
+            <div *ngIf="loginForm.get('password').hasError('required')">Password is required</div>
+            <div *ngIf="loginForm.get('password').hasError('minlength') || loginForm.get('password').hasError('maxlength')">Password must be between 3 and 16 characters</div>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

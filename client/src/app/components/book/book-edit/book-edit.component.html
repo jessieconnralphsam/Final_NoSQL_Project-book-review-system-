@@ -1,0 +1,50 @@
+<div class="container">
+  <form [formGroup]="editBookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" class="form-control" [formControl]="getFormControl('title')" placeholder="Book Title" />
+    </div>
+
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input type="text" id="author" class="form-control" [formControl]="getFormControl('author')" placeholder="Book Author" />
+    </div>
+
+    <div class="form-group">
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" class="form-control" [formControl]="getFormControl('genre')" placeholder="Book Genre" />
+    </div>
+
+    <div class="form-group">
+      <label for="year">Release Year:</label>
+      <input type="number" id="year" class="form-control" [formControl]="getFormControl('year')" step="1" placeholder="Book Release Year" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" class="form-control" [formControl]="getFormControl('description')" cols="30" rows="5" placeholder="Book Description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="cover">Cover URL:</label>
+      <input type="url" id="cover" class="form-control" [formControl]="getFormControl('cover')" placeholder="Book Cover URL" />
+    </div>
+
+    <div class="form-group">
+      <label for="isbn">ISBN:</label>
+      <input type="text" id="isbn" class="form-control" [formControl]="getFormControl('isbn')" placeholder="Book ISBN" />
+    </div>
+
+    <div class="form-group">
+      <label for="pagesCount">Pages Count:</label>
+      <input type="number" id="pagesCount" class="form-control" [formControl]="getFormControl('pagesCount')" step="1" placeholder="Book Pages Count" />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="price" class="form-control" [formControl]="getFormControl('price')" step="0.1" placeholder="Book Price" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="editBookForm.invalid">Submit Book</button>
+  </form>
+</div>

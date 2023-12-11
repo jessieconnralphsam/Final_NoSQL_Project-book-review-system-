@@ -1,0 +1,7 @@
+<h1>Welcome to Book Review System</h1>
+<div *ngIf="bestRatedBooks" class="books-home">
+  <div class="panel">
+    <h2>Books: </h2>
+  </div>
+  <app-book *ngFor="let book of bestRatedBooks" [book]="book"></app-book>
+</div>

@@ -1,0 +1,92 @@
+<div class="container">
+  <h1>Add New Item</h1>
+  <form [formGroup]="createBookForm" (ngSubmit)="onSubmit()">
+    <!-- Title -->
+    <div class="form-field">
+      <label for="title">Item Name</label>
+      <input type="text" id="title" class="form-control" [formControl]="getFormControl('title')" placeholder="Book Title" />
+      <div *ngIf="getFormControl('title').invalid && getFormControl('title').touched" class="input-error">
+        <div *ngIf="getFormControl('title').hasError('required')">Book title is required</div>
+      </div>
+    </div>
+
+    <!-- Author -->
+    <div class="form-field">
+      <label for="author">Owner</label>
+      <input type="text" id="author" class="form-control" [formControl]="getFormControl('author')" placeholder="Book Author" />
+      <div *ngIf="getFormControl('author').invalid && getFormControl('author').touched" class="input-error">
+        <div *ngIf="getFormControl('author').hasError('required')">Book author is required</div>
+      </div>
+    </div>
+
+    <!-- Genre -->
+    <div class="form-field">
+      <label for="genre">Type</label>
+      <input type="text" id="genre" class="form-control" [formControl]="getFormControl('genre')" placeholder="Book Genre" />
+      <div *ngIf="getFormControl('genre').invalid && getFormControl('genre').touched" class="input-error">
+        <div *ngIf="getFormControl('genre').hasError('required')">Book genre is required</div>
+      </div>
+    </div>
+
+    <!-- Year -->
+    <div class="form-field">
+      <label for="year">Production Year</label>
+      <input type="number" id="year" class="form-control" [formControl]="getFormControl('year')" placeholder="Book Release Year" />
+      <div *ngIf="getFormControl('year').invalid && getFormControl('year').touched" class="input-error">
+        <div *ngIf="getFormControl('year').hasError('required')">Book release year is required</div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-field">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" [formControl]="getFormControl('description')" placeholder="Book Description" rows="4"></textarea>
+      <div *ngIf="(getFormControl('description').invalid && getFormControl('description').touched) || getFormControl('description').hasError('minlength')" class="input-error">
+        <div *ngIf="getFormControl('description').hasError('required')">Item description is required</div>
+        <div *ngIf="getFormControl('description').hasError('minlength')">Item description must be more than 10 characters long</div>
+      </div>
+    </div>
+
+    <!-- Cover -->
+    <div class="form-field">
+      <label for="cover">Cover URL</label>
+      <input type="url" id="cover" class="form-control" [formControl]="getFormControl('cover')" placeholder="Book Cover URL" />
+      <div *ngIf="getFormControl('cover').invalid && getFormControl('cover').touched" class="input-error">
+        <div *ngIf="getFormControl('cover').hasError('required')">Item cover is required</div>
+        <div *ngIf="getFormControl('cover').hasError('pattern')">Please specify a valid URL</div>
+      </div>
+    </div>
+
+    <!-- ISBN -->
+    <div class="form-field">
+      <label for="isbn">Product ID</label>
+      <input type="text" id="isbn" class="form-control" [formControl]="getFormControl('isbn')" placeholder="Book ISBN" />
+      <div *ngIf="getFormControl('isbn').invalid && getFormControl('isbn').touched" class="input-error">
+        <div *ngIf="getFormControl('isbn').hasError('required')">Product ID is required</div>
+        <div *ngIf="getFormControl('isbn').hasError('pattern')">Please specify a valid Product ID</div>
+      </div>
+    </div>
+
+    <!-- PagesCount -->
+    <div class="form-field">
+      <label for="pagesCount">Item Count</label>
+      <input type="number" id="pagesCount" class="form-control" [formControl]="getFormControl('pagesCount')" placeholder="Book Pages Count" />
+      <div *ngIf="getFormControl('pagesCount').invalid && getFormControl('pagesCount').touched" class="input-error">
+        <div *ngIf="getFormControl('pagesCount').hasError('required')">Item count is required</div>
+        <div *ngIf="getFormControl('pagesCount').hasError('min')">Item count must be a positive number</div>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-field">
+      <label for="price">Price</label>
+      <input type="number" id="price" class="form-control" [formControl]="getFormControl('price')" placeholder="Book Price" step="0.1" />
+      <div *ngIf="getFormControl('price').invalid && getFormControl('price').touched" class="input-error">
+        <div *ngIf="getFormControl('price').hasError('required')">Item price is required</div>
+        <div *ngIf="getFormControl('price').hasError('min')">Item Price must be a positive number</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="createBookForm.invalid">Add Item</button>
+  </form>
+</div>

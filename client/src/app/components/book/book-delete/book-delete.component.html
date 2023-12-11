@@ -1,0 +1,18 @@
+<div class="delete-book-form">
+  <form [formGroup]="deleteBookForm" (ngSubmit)="onSubmit()">
+    <h1>Delete Book</h1>
+    
+    <div class="form-field">
+      <label>Title:</label>
+      <p>{{ deleteBookForm.get('title').value }}</p>
+    </div>
+    
+    <div class="form-field">
+      <label>Author:</label>
+      <p>{{ deleteBookForm.get('author').value }}</p>
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">Confirm Delete</button>
+  </form>
+</div>
